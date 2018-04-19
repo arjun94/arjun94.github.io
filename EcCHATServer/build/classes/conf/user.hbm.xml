@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+	<class name="User" table="user">
+	<id name="id">
+		<generator class="native"></generator>
+	</id>
+	<property name="name"></property>
+	<property name="email"></property>
+	<property name="mobile"></property>
+	<property name="userName"></property>
+	<property name="password"></property>
+	<property name="location"></property>
+	<property name="loginStatus"></property>
+	<property name="approvalStatus"></property>
+	<property name="accountStatus"></property>
+	<property name="role"></property>
+	<property name="verificationCode"></property>
+	<property name="verificationStatus"></property>
+	<property name="gender"></property>
+	
+	<list name="friends" cascade="all" table="friends" lazy="false">
+		<key column="userId"></key>
+		<index column="slno" type="long"></index>
+		 <many-to-many column="friendId" class="entity.User"></many-to-many> 
+	</list>
+	</class>
+	</hibernate-mapping>

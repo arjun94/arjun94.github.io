@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+		<class name="UserLocation" table="userLocation">
+			<id name="id">
+				<generator class="native"></generator>
+			</id>
+			<property name="time"/>
+			<property name="latitude"/>
+			<property name="longitude"/>
+			<property name="location"/>
+			<many-to-one name="user" class="entity.User" cascade="none" foreign-key="none" lazy="false"></many-to-one>
+		</class>
+
+</hibernate-mapping>

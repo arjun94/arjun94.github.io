@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="MessageBundle_en_US" />
+	<constant name="struts.multipart.maxSize" value="53477376" />
+	<package name="default" namespace="/" extends="struts-default">
+
+
+		<action name="install" class="action.InstallAction" method="install">
+			<result name="success">/view/index.jsp</result>
+		</action>
+		<!-- Admin -->
+		<action name="adminLogin" class="action.LoginAction" method="adminLogin">
+			<result name="success">/view/admin/home.jsp</result>
+			<result name="error">/view/index.jsp</result>
+		</action>
+		<action name="logout">
+			<result name="*">/view/index.jsp</result>
+		</action>
+
+		<action name="changePassword" class="action.UserAction" method="changePassword">
+			<result name="*">/view/admin/changePassword.jsp</result>
+		</action>
+		<action name="changePasswordLink">
+			<result name="*">/view/admin/changePassword.jsp</result>
+		</action>
+		<action name="checkPassword" class="action.UserAction" method="checkPassword">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+
+		<action name="viewFeedback" class="action.FeedbackAction"
+			method="list">
+			<result name="*">/view/admin/feedbacks.jsp</result>
+		</action>
+
+
+
+
+
+
+
+
+
+		<!--User -->
+		<action name="userRegistration" class="action.UserAction"
+			method="save">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="deleteUser" class="action.UserAction" method="delete">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="listusers" class="action.UserAction" method="list">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="getuser" class="action.UserAction" method="get">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+		<action name="listbyname" class="action.UserAction" method="getNameList">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+		<action name="userLogin" class="action.LoginAction" method="login">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+		<action name="userLogOut" class="action.LoginAction" method="logoutFromClient">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+
+
+		<action name="deleteAccountPermanently" class="action.UserAction"
+			method="deleteAccountPrmanently">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+		<action name="deleteAccountTemporarily" class="action.UserAction"
+			method="deleteAccountTemporarily">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+		<action name="activateAccount" class="action.UserAction"
+			method="activateAccount">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+
+
+		<action name="getUser" class="action.UserAction" method="getUserByUserName">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+
+		<action name="changePasswordFromUser" class="action.UserAction"
+			method="changePasswordFromUser">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+		<action name="getById" class="action.UserAction" method="getById">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+
+
+
+
+
+		<!--user location -->
+
+		<action name="saveUserLocation" class="action.UserLocationAction"
+			method="save">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="deleteUserLocation" class="action.UserLocationAction"
+			method="delete">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="listUserLocation" class="action.UserLocationAction"
+			method="list">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+		<action name="getUserLocation" class="action.UserLocationAction"
+			method="getByUser">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<!-- server side -->
+		<action name="listForApprovingUser" class="action.UserAction"
+			method="listForApprovingUser">
+			<result name="*">/view/admin/apporvingUserList.jsp</result>
+		</action>
+
+
+		<action name="updateAprovalStatus" class="action.UserAction"
+			method="updateAprovalStatus">
+			<result name="*" type="redirect">listForApprovingUser</result>
+		</action>
+
+		<action name="listAllUsers" class="action.UserAction" method="listAllUsers">
+			<result name="success">/view/admin/listUser.jsp</result>
+		</action>
+
+		<!--Friend request -->
+
+		<action name="saveFriendRequest" class="action.FriendRequestAction"
+			method="save">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+		<action name="deleteFriendRequest" class="action.FriendRequestAction"
+			method="delete">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="acceptFriendRequest" class="action.FriendRequestAction"
+			method="update">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="rejectFriendRequest" class="action.FriendRequestAction"
+			method="reject">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+
+
+		<action name="listFriendRequest" class="action.FriendRequestAction"
+			method="list">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+		<action name="getFriendRequest" class="action.FriendRequestAction"
+			method="get">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="getNotifications" class="action.FriendRequestAction"
+			method="listNotification">
+			<result name="success">/android/replay.jsp</result>
+		</action>
+
+		<action name="unFriend" class="action.FriendRequestAction"
+			method="removeFriends">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+		<action name="getRequestCount" class="action.FriendRequestAction"
+			method="getRequestCount">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+		<!-- Feed back -->
+		<action name="feedback" class="action.FeedbackAction" method="save">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+		<!--verification -->
+		<action name="verify" class="action.UserAction" method="verify">
+			<result name="*">/android/replay.jsp</result>
+		</action>
+
+	</package>
+</struts>
